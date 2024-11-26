@@ -48,7 +48,7 @@ export default function PuppyDetails({ selectedPuppyId, setSelectedPuppyId }) {
       Remove from roster
     </button>
     <figure>
-      <img src={puppy.imageUrl} alt={puppy.name} />
+      <img id="selected" src={puppy.imageUrl} alt={puppy.name} />
     </figure>
   </>
 );

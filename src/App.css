@@ -1,0 +1,36 @@
+
+#mapped {
+    max-width: 200px;
+    max-height: auto;
+}
+
+aside{
+    position: fixed;
+    top: 12%;
+    right: 10%;
+}
+
+#selected {
+    position: fixed;
+
+    width: 30%;
+    height:auto ;
+}
+
+#searchbar {
+position: fixed;
+right: 40%;
+top: 20%;
+
+}
+
+#searchForm *{
+    width: 150px;
+}
+
+body {
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

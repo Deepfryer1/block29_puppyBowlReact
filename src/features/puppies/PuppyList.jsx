@@ -11,13 +11,11 @@ export default function PuppyList({ setSelectedPuppyId }) {
   // TODO: Get data from getPuppies query
   //NEW
   const [searchInput, setSearchInput] = useState("");
-  const [puppies, setPuppies] = useState([]);
   const { data: players = [], isLoading, error } = useGetPuppiesQuery();
 
-  const searchForPup = (searchInput) => {
+  
     //find the searched puppy - using searchInput we want to match puppy with
-  };
-
+  
   if (isLoading) {
     return <p>Loading puppies...</p>;
   }
@@ -25,32 +23,35 @@ export default function PuppyList({ setSelectedPuppyId }) {
   if (error) {
     return <p>Error loading puppies: {error.message}</p>;
   }
+  const filteredPuppies = players.players.filter((puppy)=>
+    puppy.name.includes(searchInput));
 
   //NEW
   return (
     <>
       <div id="searchbar">
-        <form id="searchForm" onSubmit={() => searchForPup(searchInput)}>
+        <form id="searchForm" onSubmit={(e) => {
+          e.preventDefault(); 
+          }}>
           <input
             type="text"
             value={searchInput}
             placeholder="Search for Puppies"
             onChange={(e) => setSearchInput(e.target.value)}
           ></input>
-          <button onClick={() => searchForPup(searchInput)}>Search</button>
         </form>
       </div>
       <article>
         <h2>Roster</h2>
         <ul className="puppies">
           {isLoading && <li>Loading puppies...</li>}
-          {puppies.map((p) => (
+          {filteredPuppies.map((p) => (
             <li key={p.id}>
               <h3>
                 {p.name} #{p.id}
               </h3>
               <figure>
-                <img src={p.imageUrl} alt={p.name} />
+                <img id="mapped" src={p.imageUrl} alt={p.name} />
               </figure>
               <button onClick={() => setSelectedPuppyId(p.id)}>
                 See details

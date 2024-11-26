@@ -18,13 +18,11 @@ const [addPuppy, { isLoading, error }] = useAddPuppyMutation();
 
 const postPuppy = async (event) => {
   event.preventDefault();
-//NEW
-  //OLD
-  // function postPuppy(event) {
-  //   event.preventDefault();
-//OLD
     // Placeholder image w/ random photos of dogs
-    const imageUrl = "https://loremflickr.com/200/300/dog";
+  const imageUrl = "https://loremflickr.com/200/300/dog";
+  addPuppy({name, breed, imageUrl})
+
+  
   }
 
   return (
